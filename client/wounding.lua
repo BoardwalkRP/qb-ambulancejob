@@ -117,6 +117,27 @@ RegisterNetEvent('hospital:client:UsePainkillers', function()
     end)
 end)
 
+RegisterNetEvent('hospital:client:UseDrug', function(item)
+    local ped = PlayerPedId()
+    QBCore.Functions.Progressbar("use_bandage", 'Using ' .. item, 3000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+        disableMouse = false,
+        disableCombat = true,
+    }, {
+        animDict = "mp_suicide",
+        anim = "pill",
+        flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        TriggerServerEvent("hospital:server:removeDrug", item)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items[item], "remove")
+    end, function() -- Cancel
+        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        QBCore.Functions.Notify(Lang:t('error.canceled'), "error")
+    end)
+end)
+
 -- Threads
 
 function PainKillerLoop(pkAmount)

@@ -283,6 +283,14 @@ RegisterNetEvent('hospital:server:removePainkillers', function()
 	Player.Functions.RemoveItem('painkillers', 1)
 end)
 
+RegisterNetEvent('hospital:server:removeDrug', function(item)
+	local Player = QBCore.Functions.GetPlayer(source)
+
+	if not Player then return end
+
+	Player.Functions.RemoveItem(item, 1)
+end)
+
 RegisterNetEvent('hospital:server:resetHungerThirst', function()
 	local Player = QBCore.Functions.GetPlayer(source)
 
@@ -475,5 +483,15 @@ QBCore.Functions.CreateUseableItem('firstaid', function(source, item)
 		TriggerClientEvent('hospital:client:UseFirstAid', src)
 	end
 end)
+
+for _, drug in ipairs({'diazepam', 'meprobamate', 'fluphenazine', 'oxycodone'}) do
+	QBCore.Functions.CreateUseableItem(drug, function(source, item)
+		local src = source
+		local Player = QBCore.Functions.GetPlayer(src)
+		if Player.Functions.GetItemByName(item.name) ~= nil then
+			TriggerClientEvent("hospital:client:UseDrug", src, item.name)
+		end
+	end)
+end
 
 exports('GetDoctorCount', function() return doctorCount end)
