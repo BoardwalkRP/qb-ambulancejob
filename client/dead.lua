@@ -107,6 +107,32 @@ AddEventHandler('gameEventTriggered', function(event, data)
         if victimDied and NetworkGetPlayerIndexFromPed(victim) == PlayerId() and IsEntityDead(PlayerPedId()) then
             if not InLaststand then
                 SetLaststand(true)
+                local isService = {
+                    EMS = false,
+                    Police = false
+                }
+                local xPlayer = QBCore.Functions.GetPlayerData()
+                local playerJob = xPlayer.job.name
+
+                if playerJob then
+                    for jobType, _ in pairs(isService) do
+                        for _, jobName in ipairs(Config[jobType .. 'Jobs']) do
+                            if playerJob == jobName then
+                                isService[jobType] = true
+                                goto jobFound
+                            end
+                        end
+                    end
+                    ::jobFound::
+                end
+
+                if isService.Police then
+                    exports['ps-dispatch']:OfficerDown()
+                elseif isService.EMS then
+                    exports['ps-dispatch']:EmsDown()
+                else
+                    exports['ps-dispatch']:InjuriedPerson()
+                end
             elseif InLaststand and not isDead then
                 SetLaststand(false)
                 local playerid = NetworkGetPlayerIndexFromPed(victim)

@@ -35,6 +35,21 @@ Config.MaxInjuryChanceMulti = 3     -- How many times the HealthDamage value abo
 Config.DamageMinorToMajor = 35      -- How much damage would have to be applied for a minor weapon to be considered a major damage event. Put this at 100 if you want to disable it
 Config.AlertShowInfo = 2            -- How many injuries a player must have before being alerted about them
 
+Config.PoliceJobs = { -- Set police jobs for officer down alerts
+    'police',
+    'policeacademy',
+    'bcso',
+    'sahp',
+    'cid',
+    'policeacademy',
+    'ranger',
+    'prison',
+}
+Config.EMSJobs = { -- Set EMS jobs for EMS down alerts
+    'ambulance',
+    'firefighter',
+}
+
 Config.Locations = {                -- Edit the various interaction points for players or create new ones
     ['checking'] = {
         [1] = vector3(308.19, -595.35, 43.29),
