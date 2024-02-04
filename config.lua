@@ -4,7 +4,7 @@ Config.MinimalDoctors = 2                                    -- How many players
 Config.DocCooldown = 1                                       -- Cooldown between doctor calls allowed, in minutes
 Config.WipeInventoryOnRespawn = true                         -- Enable or disable removing all the players items when they respawn at the hospital
 Config.Helicopter = 'polmav'                                 -- Helicopter model that players with the ambulance job can use
-Config.BillCost = 2000                                       -- Price that players are charged for using the hospital check-in system
+Config.BillCost = 5                                       -- Price that players are charged for using the hospital check-in system
 Config.DeathTime = 300                                       -- How long the timer is for players to bleed out completely and respawn at the hospital
 Config.ReviveInterval = 360                                  -- How long the timer is for players to revive a player in laststand
 Config.MinimumRevive = 300                                   -- How long the timer is for players to revive a player in laststand
@@ -50,26 +50,25 @@ Config.EMSJobs = { -- Set EMS jobs for EMS down alerts
     'firefighter',
 }
 
-Config.Locations = {                -- Edit the various interaction points for players or create new ones
+Config.Locations = {                                    -- Edit the various interaction points for players or create new ones
     ['checking'] = {
-        [1] = vector3(308.19, -595.35, 43.29),
-        [2] = vector3(-254.54, 6331.78, 32.43), -- paleto
+        [1] = vector4(-675.28, 326.28, 83.08, 31.61),   -- Main Entrance
+        [2] = vector4(-682.4, 341.75, 83.08, 300.71),   -- Inside main floor
+        [3] = vector4(-673.82, 325.48, 88.02, 271.42),  -- Recovery floor
+        [4] = vector4(-664.27, 326.38, 140.12, 172.73), -- Middle Elevator Roof
     },
     ['duty'] = {
-        [1] = vector3(311.18, -599.25, 43.29),
-        [2] = vector3(-254.88, 6324.5, 32.58),
+        [1] = vector4(-671.74, 329.14, 88.02, 353.58), -- Recovery floor
+        [2] = vector4(-679.33, 326.75, 83.08, 188.55), -- Main Entrance
     },
     ['vehicle'] = {
-        [1] = vector4(294.578, -574.761, 43.179, 35.79),
-        [2] = vector4(-234.28, 6329.16, 32.15, 222.5),
     },
     ['helicopter'] = {
-        [1] = vector4(351.58, -587.45, 74.16, 160.5),
-        [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
     },
     ['armory'] = {
-        [1] = vector3(309.93, -602.94, 43.29),
-        [2] = vector3(-245.13, 6315.71, 32.82),
+        [1] = vector4(-674.77, 338.41, 83.08, 69.95),    -- Main pharmasy
+        [2] = vector4(-665.6, 323.21, 83.08, 260.4),     -- shop pharmasy
+        [3] = vector4(-1525.08, 841.17, 181.59, 293.31), -- Parsons
     },
     ['roof'] = {
         [1] = vector4(338.5, -583.85, 74.16, 245.5),
@@ -78,36 +77,31 @@ Config.Locations = {                -- Edit the various interaction points for p
         [1] = vector3(298.74, -599.33, 43.29),
     },
     ['stash'] = {
-        [1] = vector3(309.78, -596.6, 43.29),
+        [1] = vector3(-659.06, 314.86, 92.74),
     },
     ['beds'] = {
-        { coords = vector4(353.1, -584.6, 43.11, 152.08),    taken = false, model = 1631638868 },
-        { coords = vector4(356.79, -585.86, 43.11, 152.08),  taken = false, model = 1631638868 },
-        { coords = vector4(354.12, -593.12, 43.1, 336.32),   taken = false, model = 2117668672 },
-        { coords = vector4(350.79, -591.8, 43.1, 336.32),    taken = false, model = 2117668672 },
-        { coords = vector4(346.99, -590.48, 43.1, 336.32),   taken = false, model = 2117668672 },
-        { coords = vector4(360.32, -587.19, 43.02, 152.08),  taken = false, model = -1091386327 },
-        { coords = vector4(349.82, -583.33, 43.02, 152.08),  taken = false, model = -1091386327 },
-        { coords = vector4(326.98, -576.17, 43.02, 152.08),  taken = false, model = -1091386327 },
-        --- paleto
-        { coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672 },
-        { coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672 },
-        { coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672 },
+        [1] = { coords = vector4(-680.47, 324.81, 89.61, 256.76), taken = false, model = 1631638868 },
+        [2] = { coords = vector4(-680.69, 320.15, 89.61, 256.76), taken = false, model = 1631638868 },
+        [3] = { coords = vector4(-676.24, 315.87, 89.61, 354.30), taken = false, model = 2117668672 },
+        [4] = { coords = vector4(-671.65, 315.41, 89.61, 354.30), taken = false, model = 2117668672 },
+        [5] = { coords = vector4(-667.12, 314.94, 89.61, 354.30), taken = false, model = 2117668672 },
     },
     ['jailbeds'] = {
-        { coords = vector4(1761.96, 2597.74, 45.66, 270.14), taken = false, model = 2117668672 },
-        { coords = vector4(1761.96, 2591.51, 45.66, 269.8),  taken = false, model = 2117668672 },
-        { coords = vector4(1771.8, 2598.02, 45.66, 89.05),   taken = false, model = 2117668672 },
-        { coords = vector4(1771.85, 2591.85, 45.66, 91.51),  taken = false, model = 2117668672 },
+        [1] = { coords = vector4(1777.83, 2558.89, 46.72, 267.88), taken = false, model = 2117668672 },
+        [2] = { coords = vector4(1777.59, 2561.31, 46.72, 261.22), taken = false, model = 2117668672 },
+        [3] = { coords = vector4(1777.75, 2563.21, 46.72, 283.39), taken = false, model = 2117668672 },
+        [4] = { coords = vector4(1777.75, 2565.31, 46.72, 277.96), taken = false, model = 2117668672 },
+        [5] = { coords = vector4(1781.52, 2565.62, 46.72, 90.29), taken = false, model = 2117668672 },
+        [6] = { coords = vector4(1781.88, 2563.57, 46.72, 89.58), taken = false, model = 2117668672 },
+        [7] = { coords = vector4(1781.83, 2561.51, 46.72, 100.93), taken = false, model = 2117668672 },
     },
     ['stations'] = {
-        { label = Lang:t('info.pb_hospital'), coords = vector3(304.27, -600.33, 43.28) }
+        { label = "City Hospital", coords = vector4(-676.8, 312.47, 83.08, 355.73) }
     }
 }
 
 Config.AuthorizedVehicles = { -- Grade is key, don't add same vehicle in multiple grades. Higher rank can see lower
     [0] = {
-        ['ambulance'] = 'Ambulance'
     }
 }
 
@@ -119,6 +113,10 @@ Config.Items = { -- Grade is key, don't add same item in multiple grades. Higher
         { name = 'firstaid',                price = 0, amount = 50, info = {}, type = 'item' },
         { name = 'weapon_flashlight',       price = 0, amount = 50, info = {}, type = 'item' },
         { name = 'weapon_fireextinguisher', price = 0, amount = 50, info = {}, type = 'item' },
+        { name = 'diazepam',                price = 0, amount = 50, info = {}, type = 'item' },
+        { name = 'meprobamate',             price = 0, amount = 50, info = {}, type = 'item' },
+        { name = 'fluphenazine',            price = 0, amount = 50, info = {}, type = 'item' },
+        { name = 'oxycodone',               price = 0, amount = 50, info = {}, type = 'item' },
     }
 }
 

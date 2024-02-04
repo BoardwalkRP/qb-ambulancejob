@@ -25,8 +25,8 @@ isDead = false
 isStatusChecking = false
 statusChecks = {}
 statusCheckTime = 0
-healAnimDict = 'mini@cpr@char_a@cpr_str'
-healAnim = 'cpr_pumpchest'
+healAnimDict = 'random@train_tracks'
+healAnim = 'idle_e'
 injured = {}
 
 BodyParts = {
